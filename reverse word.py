@@ -17,9 +17,6 @@
 #     elif isWord:
 #         temp.append(i)
 #
-#
-#
-# print(tagStart)
 # print(tagIn)
 
 #list =
