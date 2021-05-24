@@ -1,31 +1,24 @@
 import sys
 
-# K, N = map(int, sys.stdin.read().split())
-#
-# arr = [int(input()) for _ in range(K)]
-# print(arr)
+K, N = map(int, sys.stdin.read().split())
+arr = [int(input()) for _ in range(K)]
+arr.sort(reverse=True)
 
-K, N = 4, 11
-arr = [802, 743, 457, 539]
-arr.sort()
-print(sum(arr))
-wire = sum(arr) // N
-print(wire)
-flag = True
-
-S = [5, 8, 1, 3, 7, 2, 6, 9]
-
-
-def binary_search(arr, value):
+def binary_search(arr, N):
     low = 0
-    high = len(arr) - 1
-    while (low <= high):
-        mid = (low + high) // 2
-        if arr[mid] > value:
-            high = mid - 1
-        elif arr[mid] < value:
-            low = mid + 1
-        else:
-            return mid
+    high = arr[0]
 
-print(binary_search(S, 9))
+    while (low <= high):
+        sum = 0
+        mid = (high+low) // 2
+        for i in arr :
+            sum += i // mid
+        if sum < N or arr[-1] < mid:
+            high = mid
+        elif sum > N :
+            low = mid
+        else :
+            return mid
+            break
+
+print(binary_search(arr, N))
