@@ -4,7 +4,7 @@ import sys
 # arr = list(map(int, sys.stdin.readline().split()))
 
 N = 5
-arr = [-2, 4, -99, -1, 98,]
+arr = [-2, 4, -99, -1, 98]
 
 def binary_search():
     arr.sort()
