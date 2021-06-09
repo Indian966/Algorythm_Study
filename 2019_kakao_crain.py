@@ -18,3 +18,8 @@ def solution (board, moves) :
     return answer
 
 print(solution(board, moves))
+
+# for i in range(10) :
+#   del stack[i]
+# 0,0,0, ... ,0 => 9
+# out of index
