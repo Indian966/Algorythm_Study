@@ -19,8 +19,20 @@ list = []
 for i in range(n):
     for j in range(n):
         if graph[i][j] > 0 and graph[i][j] < size :
-            dist = abs((x-i)+(y-j))
-            list.append({dist : i,j})
+            dist = abs(x-i) + abs(y-j)
+            list.append([i,j,dist])
+list_index = 0
+list.sort(key=lambda x : x[2])
+cnt = 0
+while list_index <= len(list) :
+    i, j = list[list_index][0], list[list_index][1]
+    if size > graph[i][j] :
+        cnt+=1
+        time+=list[list_index][2]
+
+
+
+
 print(list)
 # fish = 0
 # if fish < size :
