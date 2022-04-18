@@ -26,7 +26,7 @@ def solution (n, computers) :
 
 print(solution(3, computers))
 
-def solution(n, computers):
+def another_solution(n, computers):
     answer = 0
     visited = [0 for i in range(n)]
     def dfs(computers, visited, start):
