@@ -9,45 +9,33 @@
 # ["I 16","D 1"]	[0,0]
 # ["I 7","I 5","I -5","D -1"]	[7,5]
 
-from queue import PriorityQueue
-from collections import deque
+import heapq
 
-operations = ["I 16","D 1"]
+operations = ["I 7","I 5","I -5","D -1"]
 
 def solution(operations):
-    print('start')
     answer = []
-    que = PriorityQueue()
-    sec_que = deque()
+    que = []
     for com in operations:
         command = com.split()[0]
-        numb = com.split()[1]
+        numb = int(com.split()[1])
         if command == 'I':
-            print('Insert ', numb)
-            que.put(numb)
-        elif command == 'D' and que:
-            if int(numb) < 0:
-                print('Delete ', numb)
-                que.get()
-            elif int(numb) > 0:
-                print('Delete ', numb)
-                for i in range(que.qsize() - 1):
-                    sec_que.append(que.get())
-                    print(sec_que)
-                que.get()
-                while sec_que:
-                    que.put(sec_que.popleft())
-        # elif command == 'D'and not que :
-        #     continue
+            heapq.heappush(que,numb)
+        else :
+            if not len(que):
+                pass
+            elif numb == -1:
+                heapq.heappop(que)
+            else :
+                que = heapq.nlargest(len(que), que)[1:]
+                heapq.heapify(que)
+
     if not que :
         answer.append(0)
         answer.append(0)
     else :
-        for i in range(que.qsize() - 1):
-            sec_que.append(que.get())
-        answer.append(que.get())
-        answer.append(sec_que.popleft())
-
+        answer.append(max(que))
+        answer.append(min(que))
     return answer
 
 print(solution(operations))
