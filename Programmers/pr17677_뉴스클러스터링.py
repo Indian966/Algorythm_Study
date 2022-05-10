@@ -12,16 +12,40 @@ str1 = ['FRANCE', 'handshake', 'aa1+aa2', 'E=M*C^2']
 str2 = ['french', 'shake hands', 'AAAA12', 'e=m*c^2']
 def solution(str1, str2):
     answer = 0
-    def diff (word1, word2) :
-        a = []
-        for i in word1 :
-            if i.isalpha() :
-                a.append(i)
-        for j in range(len(a)) :
+
+    def divider (word) :
+        result = []
+        for i in range(len(word)) :
+            if i == len(word)-1 : break
+            if word[i].isalpha() == False or word[i+1].isalpha() == False :
+                continue
+            else:
+                result.append((word[i] + word[i+1]).upper())
+        return result
+
+    def intersection(a, b) :
+        common = []
+        for i in b :
+            if i in a :
+                a.remove(i)
+                common.append(i)
+        return len(common)
+
+    def union (a, b) :
+        a1 = a.copy()
+        a2 = a.copy()
+        for i in b :
+            if i not in a1 :
+                a2.append(i)
+            else :
+                a1.remove(i)
+        return len(a2)
+
+    a = divider(str1)
+    b = divider(str2)
+
+    return (65536 if union(a,b) == 0 else int(intersection(a,b) / union(a,b) * 65536))
 
 
-    diff(str1[3], str2[0])
-
-    return answer
-
-print(solution(str1,str2))
+for i,j in zip(str1, str2) :
+    print(solution(i,j))
