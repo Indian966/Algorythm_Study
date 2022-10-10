@@ -16,15 +16,15 @@ def mix_members (mem_numb) :
 
     # 70명 미만일때는 5명으로 우선 나누고 나머지를 각 조에 뿌리는게 편함
     if div_seven < 10 :
-        for i in range(1, 11):
-            for _ in range(5):
+        for i in range(1, 11) :
+            for _ in range(5) :
                 out_mem = random.choice(member_list)
                 member_list.remove(out_mem)
                 member_dict[f'{i}조'].append(out_mem)
 
             # 나머지 멤버 넣어주기
             group_cnt = 1
-            while member_list:
+            while member_list :
                 if len(member_dict[f'{group_cnt}조']) < 7:
                     out_mem = random.choice(member_list)
                     member_list.remove(out_mem)
@@ -41,17 +41,17 @@ def mix_members (mem_numb) :
 
         # 총원을 7로 나눈 나머지가 6의 배수인지, 5의 배수인지 검사 후
         # 맞다면
-        while True:
+        while True :
             # 6의 배수가 아니면서 5의 배수일 때
-            if (r % 6) > 0 and not (r % 6) % 5:
+            if (r % 6) > 0 and not (r % 6) % 5 :
                 q_6 = r // 6
                 q_5 = r % 6 // 5
                 break
             # 6의 배수일 때
-            elif not r % 6:
+            elif not r % 6 :
                 q_6 = r // 6
                 break
-            elif not r % 5:
+            elif not r % 5 :
                 q_5 = r // 5
                 break
 
@@ -60,24 +60,24 @@ def mix_members (mem_numb) :
 
         # 7명 조의 숫자만큼 딕셔너리에 추가
         group_cnt = 1
-        for _ in range(1, mok_7 + 1):
-            for _ in range(7):
+        for _ in range(1, mok_7 + 1) :
+            for _ in range(7) :
                 out_mem = random.choice(member_list)
                 member_list.remove(out_mem)
                 member_dict[f'{group_cnt}조'].append(out_mem)
             group_cnt += 1
 
         # 6명 조의 숫자만큼 딕셔너리에 추가
-        for _ in range(1, mok_6 + 1):
-            for _ in range(6):
+        for _ in range(1, mok_6 + 1) :
+            for _ in range(6) :
                 out_mem = random.choice(member_list)
                 member_list.remove(out_mem)
                 member_dict[f'{group_cnt}조'].append(out_mem)
             group_cnt += 1
 
         # 5명 조의 숫자만큼 딕셔너리에 추가
-        for _ in range(1, mok_5 + 1):
-            for _ in range(5):
+        for _ in range(1, mok_5 + 1) :
+            for _ in range(5) :
                 out_mem = random.choice(member_list)
                 member_list.remove(out_mem)
                 member_dict[f'{group_cnt}조'].append(out_mem)
