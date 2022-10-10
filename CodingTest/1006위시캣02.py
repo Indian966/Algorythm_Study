@@ -18,13 +18,17 @@ d_time = ['14:00~18:00', '10:00~18:00', '12:00~14:00', '14:00~15:00;16:00~17:00'
 
 # 시간을 알아 보기 쉽게 1,0으로 만들기
 def time_convert(time_list) :
-
-    for i in time_list :
-        if ';' in i :
-            arr1, arr2 = i.split(';')
-            work1 = time_calc(arr1)
-            work2 = time_calc(arr2)
+    # time_list : 한 명이 일 할 수 있는 시간 리스트
+    for i in range(len(time_list)) :
+        if ';' in time_list[i] :
+            arr1, arr2 = time_list[i].split(';')
+            work = time_calc(arr1) + time_calc(arr2)
+            print(work)
         else :
+            work = time_calc(time_list[i])
+            print(work)
+
+
 
 
 def time_calc (arr: list) :
@@ -38,14 +42,14 @@ def time_calc (arr: list) :
 
 # time_convert(a_time)
 
-week_dict = {
-    'Mon' : [0, 0, 0, 0, 0, 0, 0, 0],
-    'Tue' : [0, 0, 0, 0, 0, 0, 0, 0],
-    'Wen' : [0, 0, 0, 0, 0, 0, 0, 0],
-    'Thu' : [0, 0, 0, 0, 0, 0, 0, 0],
-    'Fri' : [0, 0, 0, 0, 0, 0, 0, 0]
-    }
-for i in week_dict.keys() :
-    print(week_dict[i])
+# week_dict = {
+#     'Mon' : [0, 0, 0, 0, 0, 0, 0, 0],
+#     'Tue' : [0, 0, 0, 0, 0, 0, 0, 0],
+#     'Wen' : [0, 0, 0, 0, 0, 0, 0, 0],
+#     'Thu' : [0, 0, 0, 0, 0, 0, 0, 0],
+#     'Fri' : [0, 0, 0, 0, 0, 0, 0, 0]
+#     }
 
-time_calc(a_time[0])
+week_list = [[0] * (8) for _ in range(5)]
+pprint(week_list)
+time_convert(a_time)
