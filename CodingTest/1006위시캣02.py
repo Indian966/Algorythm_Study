@@ -8,8 +8,44 @@
     ii) 초과 근무로 근무 불가한 시간으로 취급
 """
 
+from pprint import pprint
+
 
 a_time = ['10:00~14:00', '15:00~18:00', '11:00~13:00;14:00~16:00', '10:00~11:00', '15:00~18:00']
 b_time = ['11:00~14:00', '14:00~16:00', '16:00~18:00', '10:00~11:00;12:00~13:00', '14:00~16:00']
 c_time = ['14:00~16:00', '16:00~18:00', '10:00~12:00', '12:00~14:00', '14:00~16:00']
 d_time = ['14:00~18:00', '10:00~18:00', '12:00~14:00', '14:00~15:00;16:00~17:00', '10:00~12:00']
+
+# 시간을 알아 보기 쉽게 1,0으로 만들기
+def time_convert(time_list) :
+
+    for i in time_list :
+        if ';' in i :
+            arr1, arr2 = i.split(';')
+            work1 = time_calc(arr1)
+            work2 = time_calc(arr2)
+        else :
+
+
+def time_calc (arr: list) :
+    # arr : 하루에 일 할 수 있는 시간
+
+    small, big = arr.split('~')
+    answer = list(range(int(small[1]), int(big[1])))
+
+    # [0, 1, 2, 3]
+    return answer
+
+# time_convert(a_time)
+
+week_dict = {
+    'Mon' : [0, 0, 0, 0, 0, 0, 0, 0],
+    'Tue' : [0, 0, 0, 0, 0, 0, 0, 0],
+    'Wen' : [0, 0, 0, 0, 0, 0, 0, 0],
+    'Thu' : [0, 0, 0, 0, 0, 0, 0, 0],
+    'Fri' : [0, 0, 0, 0, 0, 0, 0, 0]
+    }
+for i in week_dict.keys() :
+    print(week_dict[i])
+
+time_calc(a_time[0])
